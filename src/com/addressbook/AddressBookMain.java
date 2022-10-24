@@ -12,7 +12,8 @@ public class AddressBookMain {
                 System.out.println("-----------------------------");
                 System.out.println("1.Create a new Contact");
                 System.out.println("2. Enter Available Contact Details");
-                System.out.println("3.Exit");
+                System.out.println("3. Edit Contact");
+                System.out.println("4.Exit");
                 System.out.print("Enter Option: ");
                 int option = scanner.nextInt();
                 switch (option)
@@ -24,6 +25,9 @@ public class AddressBookMain {
                         addressBookMain.fillContactDetails();
                         break;
                     case 3:
+                        addressBookMain.editContact();
+                        break;
+                    case 4:
                         System.out.println("exiting address book....");
                         System.exit(0);
                         break;

@@ -1,6 +1,7 @@
 package com.addressbook;
 
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -64,5 +65,64 @@ public class Book {
         }
 
     }
+    void editContact()throws Exception
+    {
+        System.out.print("Enter Name of the contact to edit:");
+        String contactName = sc.nextLine();
+        if(voidContacts.contains(contactName))
+        {
+            System.out.println("Please fill the details of "+ contactName + " before editing it");
+            return;
+        }
+        else if(!nonVoidContacts.contains(contactName))
+        {
+            System.out.println("Please create the contact "+ contactName +" before editing it");
+            return;
+        }
+        System.out.println("\nThe details of " + contactName + " at present is:");
+        readFile(contactName);
+        System.out.println("\nEnter details to edit...\nFirst Name:\nLast Name:\nAddress:\nCity:\nState:\nZip:\nMobile Number: ");
+        String newContent="";
+        for (int i = 1; i <= 7; i++)
+        {
+            newContent += sc.nextLine() + "\n";
+        }
+        String option;
+        do
+        {
+            System.out.println("Press\nS for SAVE        C for CANCEL");
+            option = sc.nextLine();
+        } while (!(option.equalsIgnoreCase("s")  || option.equalsIgnoreCase("c")));
+        switch(option)
+        {
+            case "s":
+            case "S":
+                writeFile(contactName, newContent);
+                System.out.println(contactName + " is saved with new content");
+                break;
+            case "c":
+            case "C":
+                System.out.println("changes are not saved");
+                return;
+            default:
+                System.out.println("please select either S or C");
+        }
 
+    }
+    void readFile(String fileName)throws Exception
+    {
+        FileReader fileReader = new FileReader(fileName);
+        int character;
+        while ((character = fileReader.read()) != -1)
+        {
+            System.out.print((char) character);
+        }
+        fileReader.close();
+    }
+    void writeFile(String fileName,String content)throws Exception
+    {
+        FileWriter fw = new FileWriter(fileName);
+        fw.write(content);
+        fw.close();
+    }
 }
