@@ -125,4 +125,29 @@ public class Book {
         fw.write(content);
         fw.close();
     }
+    void deleteContact()
+    {
+        System.out.print("Enter contact name to delete:");
+        String contactName = sc.nextLine().trim();
+        File file = new File(contactName);
+        if(file.exists())
+        {
+            if(file.delete())
+            {
+                if(voidContacts.contains(contactName))
+                {
+                    voidContacts.remove(contactName);
+                }
+                else
+                {
+                    nonVoidContacts.remove(contactName);
+                }
+                System.out.println(contactName + " is deleted Successfully..!");
+            }
+        }
+        else
+        {
+            System.out.println(contactName + " doesn't exists");
+        }
+    }
 }

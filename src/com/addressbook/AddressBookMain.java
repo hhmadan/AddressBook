@@ -3,19 +3,19 @@ package com.addressbook;
 import java.util.Scanner;
 
 public class AddressBookMain {
-        static final Scanner scanner = new Scanner(System.in);
-        public static void main(String[] args) throws Exception
-        {
+    static final Scanner sc = new Scanner(System.in);
+    public static void main(String[] args) throws Exception {
             Book addressBookMain = new Book();
             while (true)
             {
                 System.out.println("-----------------------------");
-                System.out.println("1.Create a new Contact");
+                System.out.println("1. Create a new Contact");
                 System.out.println("2. Enter Available Contact Details");
                 System.out.println("3. Edit Contact");
-                System.out.println("4.Exit");
+                System.out.println("4. Delete Contact");
+                System.out.println("5. Exit");
                 System.out.print("Enter Option: ");
-                int option = scanner.nextInt();
+                int option = sc.nextInt();
                 switch (option)
                 {
                     case 1:
@@ -28,6 +28,9 @@ public class AddressBookMain {
                         addressBookMain.editContact();
                         break;
                     case 4:
+                        addressBookMain.deleteContact();
+                        break;
+                    case 5:
                         System.out.println("exiting address book....");
                         System.exit(0);
                         break;
@@ -37,6 +40,5 @@ public class AddressBookMain {
                 }
 
             }
-
-        }
+    }
 }
