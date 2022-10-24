@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class AddressBookMain {
         static final Scanner scanner = new Scanner(System.in);
-
         public static void main(String[] args) throws Exception
         {
             Book addressBookMain = new Book();
